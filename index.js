@@ -36,7 +36,7 @@ client.on('message', msg => {
     const target = client.users.cache.get('576154421579481090');
     target.send(embed);
     const cactus = client.users.cache.get('473110112844644372');
-    target.send(embed);
+    cactus.send(embed);
   }
 });
 

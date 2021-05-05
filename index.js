@@ -6,15 +6,27 @@ const reasons = require('./general/reasons.json');
 const client = new Discord.Client();
 const prefix = config.prefix;
 
-client.once('ready', () => {
-  client.user.setActivity('!send');
-  console.log(`Logged in as ${client.user.tag}`)
-});
-
 const num = (input = Number) => {
   if (!isNaN(input) && input > 0 && input < reasons[100].length) return parseInt(input);
   else return Math.floor(Math.random() * reasons[100].length);
 };
+
+client.once('ready', () => {
+  client.user.setActivity('!send');
+  setInterval(() => {
+    const i = num();
+    embed = new Discord.MessageEmbed()
+      .setTitle(`Reason #${i + 1} on why I love you!!!!!!!!!!!!!`)
+      .setColor('#014f41')
+      .setAuthor('Thomas', 'https://cdn.discordapp.com/avatars/473110112844644372/26ab29e81d29d6a4c34053688e938559.png?size=256')
+      .setDescription(`I love you because, ${reasons[100][i]}`);
+    const target = client.users.cache.get('576154421579481090');
+    target.send(embed);
+    const cactus = client.users.cache.get('473110112844644372');
+    cactus.send(embed);
+  }, 3600000)
+  console.log(`Logged in as ${client.user.tag}`)
+});
 
 client.on('message', msg => {
 
@@ -28,8 +40,9 @@ client.on('message', msg => {
       for(let i of reasons[100]) {
         ++num
         setTimeout(() => {
+          let _num = num;
           var embed = new Discord.MessageEmbed()
-            .setTitle(`Reason #${num} on why I love you!!!!!!!!!!!!!`)
+            .setTitle(`Reason #${_num} on why I love you!!!!!!!!!!!!!`)
             .setColor('#014f41')
             .setAuthor('Thomas', 'https://cdn.discordapp.com/avatars/473110112844644372/26ab29e81d29d6a4c34053688e938559.png?size=256')
             .setDescription(`I love you because, ${i}`);

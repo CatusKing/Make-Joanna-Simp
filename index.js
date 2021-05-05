@@ -26,15 +26,18 @@ client.on('message', msg => {
     if (args[0] == 'all' && msg.author.id == '473110112844644372') {
       let num = 0;
       for(let i of reasons[100]) {
-        var embed = new Discord.MessageEmbed()
-          .setTitle(`Reason #${++num} on why I love you!!!!!!!!!!!!!`)
-          .setColor('#014f41')
-          .setAuthor('Thomas', 'https://cdn.discordapp.com/avatars/473110112844644372/26ab29e81d29d6a4c34053688e938559.png?size=256')
-          .setDescription(`I love you because, ${i}`);
-        const target = client.users.cache.get('576154421579481090');
-        target.send(embed);
-        const cactus = client.users.cache.get('473110112844644372');
-        cactus.send(embed);
+        ++num
+        setTimeout(() => {
+          var embed = new Discord.MessageEmbed()
+            .setTitle(`Reason #${num} on why I love you!!!!!!!!!!!!!`)
+            .setColor('#014f41')
+            .setAuthor('Thomas', 'https://cdn.discordapp.com/avatars/473110112844644372/26ab29e81d29d6a4c34053688e938559.png?size=256')
+            .setDescription(`I love you because, ${i}`);
+          const target = client.users.cache.get('576154421579481090');
+          target.send(embed);
+          const cactus = client.users.cache.get('473110112844644372');
+          cactus.send(embed);
+        }, num * 1000);
       }
     } else {
       const i = num(args[0]);

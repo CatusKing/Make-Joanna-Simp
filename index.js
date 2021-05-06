@@ -45,7 +45,7 @@ client.on('message', msg => {
             .setTitle(`Reason #${_num} on why I love you!!!!!!!!!!!!!`)
             .setColor('#014f41')
             .setAuthor('Thomas', 'https://cdn.discordapp.com/avatars/473110112844644372/26ab29e81d29d6a4c34053688e938559.png?size=256')
-            .setDescription(`I love you because, ${i}`);
+            .setDescription(`I love you because ${i}`);
           const target = client.users.cache.get('576154421579481090');
           target.send(embed);
           const cactus = client.users.cache.get('473110112844644372');
